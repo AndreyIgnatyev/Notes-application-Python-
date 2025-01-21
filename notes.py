@@ -93,4 +93,38 @@ def filter_notes_by_date():
             print(f"Тело: {note['body']}\n")
     else:
         print(f"Заметок за дату {date_input} не найдено.")
-        
+
+# Функция редактирования заметки
+def edit_note():
+    notes = load_notes()
+    try:
+        note_id = int(input("Введите ID заметки для редактирования: "))
+    except ValueError:
+        print("Ошибка: ID должен быть числом.")
+        return
+
+    for note in notes:
+        if note['id'] == note_id:
+            note['title'] = input("Введите новый заголовок: ")
+            note['body'] = input("Введите новое тело заметки: ")
+            note['timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            save_notes(notes)
+            print("Заметка успешно обновлена.")
+            return
+    print("Заметка с таким ID не найдена.")
+
+# Функция удаления заметки
+def delete_note():
+    notes = load_notes()
+    try:
+        note_id = int(input("Введите ID заметки для удаления: "))
+    except ValueError:
+        print("Ошибка: ID должен быть числом.")
+        return
+
+    new_notes = [note for note in notes if note['id'] != note_id]
+    if len(new_notes) == len(notes):
+        print("Заметка с таким ID не найдена.")
+    else:
+        save_notes(new_notes)
+        print("Заметка успешно удалена.")
