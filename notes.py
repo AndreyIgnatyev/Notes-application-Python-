@@ -37,3 +37,13 @@ def add_note():
     notes.append(note)
     save_notes(notes)
     print("Заметка успешно добавлена.")
+
+# Функция чтения всех заметок
+def read_notes():
+    notes = load_notes()
+    if not notes:
+        print("Заметок нет.")
+        return
+    for note in notes:
+        print(f"ID: {note['id']}, Заголовок: {note['title']}, Дата: {note['timestamp']}")
+        print(f"Тело: {note['body']}\n")
