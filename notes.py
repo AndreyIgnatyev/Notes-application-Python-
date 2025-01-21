@@ -47,3 +47,21 @@ def read_notes():
     for note in notes:
         print(f"ID: {note['id']}, Заголовок: {note['title']}, Дата: {note['timestamp']}")
         print(f"Тело: {note['body']}\n")
+        
+# Функция чтения одной заметки по ID
+def read_note_by_id():
+    notes = load_notes()
+    try:
+        note_id = int(input("Введите ID заметки для просмотра: "))
+    except ValueError:
+        print("Ошибка: ID должен быть числом.")
+        return
+
+    for note in notes:
+        if note['id'] == note_id:
+            print(f"ID: {note['id']}")
+            print(f"Заголовок: {note['title']}")
+            print(f"Дата: {note['timestamp']}")
+            print(f"Тело: {note['body']}")
+            return
+    print("Заметка с таким ID не найдена.")
