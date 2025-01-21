@@ -147,6 +147,8 @@ def main():
         elif command == 'выход':
             print("Выход из программы.")
             break
-        else:
+       else:
             print("Неизвестная команда. Попробуйте снова.")
+
+if __name__ == "__main__":
     main()
