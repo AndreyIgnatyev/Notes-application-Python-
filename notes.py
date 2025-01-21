@@ -128,3 +128,25 @@ def delete_note():
     else:
         save_notes(new_notes)
         print("Заметка успешно удалена.")
+
+def main():
+    while True:
+        command = input("Введите команду (добавить, показать, айди, фильтр, редактировать, удалить, выход): ").strip().lower()
+        if command == 'добавить':
+            add_note()
+        elif command == 'показать':
+            read_notes()
+        elif command == 'айди':
+            read_note_by_id()
+        elif command == 'фильтр':
+            filter_notes_by_date()
+        elif command == 'редактировать':
+            edit_note()
+        elif command == 'удалить':
+            delete_note()
+        elif command == 'выход':
+            print("Выход из программы.")
+            break
+        else:
+            print("Неизвестная команда. Попробуйте снова.")
+    main()
